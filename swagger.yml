@@ -13,7 +13,7 @@ basePath: /api
 # Paths supported by the server application
 paths:
   /call_calculator:
-    post:
+    get:
       operationId: calculator.calculate_call_option_price
       tags:
         - calculator
@@ -21,27 +21,27 @@ paths:
       parameters:
       - name: strike_price
         description: the strike price of the option
-        in: body
+        in: query
         type: number
         format: double
       - name: option_maturity_years
         description: the time from now until the maturity of the option expressed in years
-        in: body
+        in: query
         type: number
         format: double
       - name: current_price
         description: the current price of the underlying
-        in: body
+        in: query
         type: number
         format: double
       - name: volatility_percent
         description: the volatility of the underlying, expressed as a percentage
-        in: body
+        in: query
         type: number
         format: double
       - name: risk_free_rate_percent
         description: the risk free interest rate, expressed as a percentage
-        in: body
+        in: query
         type: number
         format: double
       responses:
@@ -51,7 +51,7 @@ paths:
             type: number
             format: double
   /put_calculator:
-    post:
+    get:
       operationId: calculator.calculate_put_option_price
       tags:
         - calculator
@@ -59,27 +59,27 @@ paths:
       parameters:
       - name: strike_price
         description: the strike price of the option
-        in: body
+        in: query
         type: number
         format: double
       - name: option_maturity_years
         description: the time from now until the maturity of the option expressed in years
-        in: body
+        in: query
         type: number
         format: double
       - name: current_price
         description: the current price of the underlying
-        in: body
+        in: query
         type: number
         format: double
       - name: volatility_percent
         description: the volatility of the underlying, expressed as a percentage
-        in: body
+        in: query
         type: number
         format: double
       - name: risk_free_rate_percent
         description: the risk free interest rate, expressed as a percentage
-        in: body
+        in: query
         type: number
         format: double
       responses:
