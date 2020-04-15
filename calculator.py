@@ -3,9 +3,10 @@
 import math
 import scipy.stats
 
-
-def calculate_call_option_price(strike_price, option_maturity_years, current_price, volatility_percent,
-                                risk_free_rate_percent):
+#TODO: change name to calculate_option_price
+#TODO: add call/put to JSON
+#TODO: add exception handling (ZeroDivisionException etc)
+def calculate_call_option_price(model_inputs):
     """Summary of Description of the Function
 
     Calculates the price of a call option using the Black-Scholes option pricing formula
@@ -15,6 +16,13 @@ def calculate_call_option_price(strike_price, option_maturity_years, current_pri
     Returns:
 
     """
+    # Unpack model input parameters from JSON
+    strike_price = model_inputs.get("strike_price", None)
+    option_maturity_years = model_inputs.get("option_maturity_years", None)
+    current_price = model_inputs.get("current_price", None)
+    volatility_percent = model_inputs.get("volatility_percent", None)
+    risk_free_rate_percent = model_inputs.get("risk_free_rate_percent", None)
+
     d1 = (math.log(current_price / strike_price) + (risk_free_rate_percent / 100 +
                                                     (math.pow(volatility_percent / 100, 2)) / 2) *
           option_maturity_years) / (volatility_percent / 100 * math.pow(option_maturity_years, 0.5))
@@ -24,9 +32,8 @@ def calculate_call_option_price(strike_price, option_maturity_years, current_pri
 
     return call_price
 
-
-def calculate_put_option_price(strike_price, option_maturity_years, current_price, volatility_percent,
-                               risk_free_rate_percent):
+#TODO: delete function calculate_put_option_price
+def calculate_put_option_price(model_inputs):
     """Summary of Description of the Function
 
     Calculates the price of a put option using the Black-Scholes option pricing formula
@@ -36,6 +43,13 @@ def calculate_put_option_price(strike_price, option_maturity_years, current_pric
     Returns:
 
     """
+    # Unpack model input parameters from JSON
+    strike_price = model_inputs.get("strike_price", None)
+    option_maturity_years = model_inputs.get("option_maturity_years", None)
+    current_price = model_inputs.get("current_price", None)
+    volatility_percent = model_inputs.get("volatility_percent", None)
+    risk_free_rate_percent = model_inputs.get("risk_free_rate_percent", None)
+
     d1 = (math.log(current_price / strike_price) + (risk_free_rate_percent / 100 +
                                                     (math.pow(volatility_percent / 100, 2)) / 2) *
           option_maturity_years) / (volatility_percent / 100 * math.pow(option_maturity_years, 0.5))

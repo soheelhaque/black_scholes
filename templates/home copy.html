@@ -11,9 +11,6 @@
       crossorigin="anonymous">
     </script>
 </head>
-<!--
-    TODO: Add a radio button to select call/put
--->
 <body>
     <div class="container">
         <h1 class="banner">Black-Scholes Calculator Demo Application</h1>
@@ -65,12 +62,7 @@
     </div>
     <!--
         JQuery Syntax: $(selector).action()
-        $() is shorthand for jQuery()
-        # denotes selector for an HTML id
-        . denotes selector for an HTML class
-
-        TODO: Add call/put selection to JSON
-        TODO: Change url from call_calculator to calculator
+        # denotes selector for an id
     -->
     <script>
     function calculate() {
@@ -88,16 +80,15 @@
                 'risk_free_rate_percent': parseInt($("#risk_free_rate_percent").val())
                 })
         };
-        $.ajax(ajax_options)
-            .done(function(data) {
-                $("#optionprice").text(data);
-            })
-            .fail(function(xhr, textStatus, errorThrown) {
-                let error_msg = textStatus + ': ' + errorThrown + ' - ' + xhr.responseJSON.detail;
-                $("#optionprice").text("");
-                alert(error_msg.Message);
+        $.ajax(ajax_options).then(function(data) {
+            $("#optionprice").text(data)
             });
     }
     </script>
 </body>
+<!--
+    Commented JS file out while testing with local JS
+    TODO: remove calculate() and uncomment script tag
+    <script src="static/js/home.js"></script>
+-->
 </html>
