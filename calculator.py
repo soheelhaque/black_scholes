@@ -3,9 +3,10 @@
 import math
 import scipy.stats
 
-#TODO: change name to calculate_option_price
-#TODO: add call/put to JSON
-#TODO: add exception handling (ZeroDivisionException etc)
+
+# TODO: change name to calculate_option_price
+# TODO: add call/put to JSON
+# TODO: add exception handling (ZeroDivisionException etc)
 def calculate_call_option_price(model_inputs):
     """Summary of Description of the Function
 
@@ -32,7 +33,8 @@ def calculate_call_option_price(model_inputs):
 
     return call_price
 
-#TODO: delete function calculate_put_option_price
+
+# TODO: delete function calculate_put_option_price
 def calculate_put_option_price(model_inputs):
     """Summary of Description of the Function
 
