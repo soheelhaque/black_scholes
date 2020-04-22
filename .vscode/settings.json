@@ -1,3 +1,3 @@
 {
-    "python.pythonPath": "C:\\Users\\sohee\\venv\\BlackScholes\\Scripts\\python.exe"
+    "python.pythonPath": "${env:USERPROFILE}\\venv\\BlackScholes\\Scripts\\python.exe"
 }
