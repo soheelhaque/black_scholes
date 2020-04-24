@@ -26,7 +26,7 @@
                     </label>
                 </tr>
                 <tr>
-                    <td><label for="option_maturity_years">Option Maturity</td>
+                    <td><label for="option_maturity_years">Option Maturity(years)</td>
                     <td><input id="option_maturity_years" type="text" /></td>
                     </label>
                 </tr>
@@ -36,12 +36,12 @@
                 </label>
                 </tr>
                 <tr>
-                    <td><label for="volatility_percent">Volatility</td>
+                    <td><label for="volatility_percent">Volatility(%)</td>
                     <td><input id="volatility_percent" type="text" /></td>
                     </label>
                 </tr>
                 <tr>
-                    <td><label for="risk_free_rate_percent">Risk Free Rate</td>
+                    <td><label for="risk_free_rate_percent">Risk Free Rate(%)</td>
                     <td><input id="risk_free_rate_percent" type="text" /></td>
                     </label>
                 </tr>
@@ -81,11 +81,11 @@
             contentType: 'application/json',
             dataType: 'json',
             data: JSON.stringify({
-                'strike_price': parseInt($("#strike_price").val()), 
-                'option_maturity_years': parseInt($("#option_maturity_years").val()), 
-                'current_price': parseInt($("#current_price").val()), 
-                'volatility_percent': parseInt($("#volatility_percent").val()), 
-                'risk_free_rate_percent': parseInt($("#risk_free_rate_percent").val())
+                'strike_price': parseFloat($("#strike_price").val()), 
+                'option_maturity_years': parseFloat($("#option_maturity_years").val()), 
+                'current_price': parseFloat($("#current_price").val()), 
+                'volatility_percent': parseFloat($("#volatility_percent").val()), 
+                'risk_free_rate_percent': parseFloat($("#risk_free_rate_percent").val())
                 })
         };
         $.ajax(ajax_options)
