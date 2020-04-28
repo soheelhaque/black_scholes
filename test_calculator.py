@@ -3,7 +3,6 @@ import json
 import unittest
 from calculator import calculate_call_option_price
 
-
 class TestOptionPriceCalculator(unittest.TestCase):
     
     def test_calculate_call_option_price_positive_ir(self):
