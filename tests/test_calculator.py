@@ -1,7 +1,9 @@
 # TODO: change name of imported function
 import json
 import unittest
-from calculator import calculate_call_option_price
+
+from context import black_scholes
+from black_scholes.calculator import calculate_call_option_price
 
 
 class TestOptionPriceCalculator(unittest.TestCase):
