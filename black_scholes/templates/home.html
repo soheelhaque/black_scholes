@@ -11,15 +11,20 @@
       crossorigin="anonymous">
     </script>
 </head>
-<!--
-    TODO: Add a radio button to select call/put
--->
 <body>
     <div class="container">
         <h1 class="banner">Black-Scholes Calculator Demo Application</h1>
         <div class="section editor">
             <table>
                 <caption>Inputs</td></caption>
+                <tr>
+                    <td>Call/Put</td>
+                    <td><label for="call">CALL
+                    <input id="call" type="radio" name="call_put" value="CALL"/></label>
+                    <label for="put">PUT
+                    <input id="put" type="radio" name="call_put" value="PUT"/></td>
+                </label>
+                </tr>
                 <tr>
                     <td><label for="strike_price">Strike Price</td>
                     <td><input id="strike_price" type="text" /></td>
@@ -68,19 +73,17 @@
         $() is shorthand for jQuery()
         # denotes selector for an HTML id
         . denotes selector for an HTML class
-
-        TODO: Add call/put selection to JSON
-        TODO: Change url from call_calculator to calculator
     -->
     <script>
     function calculate() {
         let ajax_options = {
             type: 'POST',
-            url: 'api/call_calculator',
+            url: 'api/calculator',
             accepts: 'application/json',
             contentType: 'application/json',
             dataType: 'json',
             data: JSON.stringify({
+                'call_put': $('input[name=call_put]:checked').val(), 
                 'strike_price': parseFloat($("#strike_price").val()), 
                 'option_maturity_years': parseFloat($("#option_maturity_years").val()), 
                 'current_price': parseFloat($("#current_price").val()), 

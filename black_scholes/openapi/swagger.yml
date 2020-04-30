@@ -11,17 +11,13 @@ produces:
 basePath: /api
 
 # Paths supported by the server application
-# TODO: change URL from call_calculator to calculator & update description
-# TODO: change operationId to match updated python function
-# TODO: add put/call to schema
-# TODO: delete put_calculator
 paths:
-  /call_calculator:
+  /calculator:
     post:
-      operationId: calculator.calculate_call_option_price
+      operationId: calculator.calculate_option_price
       tags:
         - calculator
-      description: Calculates the price of a call option using the Black-Scholes option pricing model
+      description: Calculates the price of an option using the Black-Scholes option pricing model
       parameters:
       - in: body
         name: model_inputs
@@ -29,52 +25,15 @@ paths:
         schema:
           type: object
           required:
+          - call_put
           - strike_price
           - option_maturity_years
           - current_price
           - volatility_percent
           - risk_free_rate_percent
           properties:
-            strike_price:
-              type: number
-              format: double
-            option_maturity_years:
-              type: number
-              format: double
-            current_price:
-              type: number
-              format: double
-            volatility_percent:
-              type: number
-              format: double
-            risk_free_rate_percent:
-              type: number
-              format: double
-      responses:
-        200:
-          description: Successful calculation of option price
-          schema:
-            type: number
-            format: double
-  /put_calculator:
-    post:
-      operationId: calculator.calculate_put_option_price
-      tags:
-        - calculator
-      description: Calculates the price of a put option using the Black-Scholes option pricing model
-      parameters:
-      - in: body
-        name: model_inputs
-        description: The inputs into the Black-Scholes option pricing model
-        schema:
-          type: object
-          required:
-          - strike_price
-          - option_maturity_years
-          - current_price
-          - volatility_percent
-          - risk_free_rate_percent
-          properties:
+            call_put:  
+              type: string
             strike_price:
               type: number
               format: double
