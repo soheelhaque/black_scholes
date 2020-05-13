@@ -16,39 +16,33 @@
         <h1 class="banner">Black-Scholes Calculator Demo Application</h1>
         <div class="section editor">
             <table>
-                <caption>Inputs</td></caption>
+                <caption>Inputs</caption>
                 <tr>
                     <td>Call/Put</td>
-                    <td><label for="call">CALL
-                    <input id="call" type="radio" name="call_put" value="CALL"/></label>
-                    <label for="put">PUT
+                    <td><label for="call">CALL</label>
+                    <input id="call" type="radio" name="call_put" value="CALL"/>
+                    <label for="put">PUT</label>
                     <input id="put" type="radio" name="call_put" value="PUT"/></td>
-                </label>
                 </tr>
                 <tr>
-                    <td><label for="strike_price">Strike Price</td>
+                    <td><label for="strike_price">Strike Price</label></td>
                     <td><input id="strike_price" type="text" /></td>
-                    </label>
                 </tr>
                 <tr>
-                    <td><label for="option_maturity_years">Option Maturity(years)</td>
+                    <td><label for="option_maturity_years">Option Maturity(years)</label></td>
                     <td><input id="option_maturity_years" type="text" /></td>
-                    </label>
                 </tr>
                 <tr>
-                    <td><label for="current_price">Current Price</td>
+                    <td><label for="current_price">Current Price </label></td>
                     <td><input id="current_price" type="text" /></td>
-                </label>
                 </tr>
                 <tr>
-                    <td><label for="volatility_percent">Volatility(%)</td>
+                    <td><label for="volatility_percent">Volatility(%)</label></td>
                     <td><input id="volatility_percent" type="text" /></td>
-                    </label>
                 </tr>
                 <tr>
-                    <td><label for="risk_free_rate_percent">Risk Free Rate(%)</td>
+                    <td><label for="risk_free_rate_percent">Risk Free Rate(%)</label></td>
                     <td><input id="risk_free_rate_percent" type="text" /></td>
-                    </label>
                 </tr>
                 <tr>
                     <td colspan="2"><button id="calculateprice" onclick="calculate()">Calculate</button></td>
@@ -60,8 +54,8 @@
             <table>
                 <caption>Results</caption>
                 <tr>
-                    <td width=50%>Option Price</td>
-                    <td width=50% id="optionprice"></td>
+                    <td width="50%">Option Price</td>
+                    <td width="50%" id="optionprice"></td>
                 </tr>
             </table>
         </div>
@@ -96,9 +90,8 @@
                 $("#optionprice").text(data);
             })
             .fail(function(jqXHR, textStatus, errorThrown) {
-                response = jqXHR.responseJSON
-                host_err = response.error
-                let error_msg = textStatus + ': ' + errorThrown + '\n' + host_err;
+                err_details = JSON.stringify(jqXHR.responseJSON)
+                let error_msg = textStatus + ': ' + errorThrown + '\n' + err_details;
                 $("#optionprice").text("");
                 alert(error_msg);
             });

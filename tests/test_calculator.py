@@ -57,5 +57,6 @@ class TestOptionPriceCalculator(unittest.TestCase):
         json_in = json.loads(model_inputs)
         self.assertRaises(ValueError, calculate_option_price, model_inputs=json_in)
 
+
 if __name__ == '__main__':
     unittest.main()

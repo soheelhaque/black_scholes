@@ -3,7 +3,6 @@
 # this assume that the parent directory contains the source package
 import os
 import sys
-import sys
 
 # insert the parent directory of the current module into the search path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))

@@ -48,10 +48,10 @@ def calculate_option_price(model_inputs):
         return round(price, 3)
     
     except TypeError as e:
-        raise TypeError("One of your inputs is not a number. Please check and try again. Details: <" + str(e) + ">")
+        raise TypeError("One of your inputs is not a number. Please check and try again. Details: " + str(e))
 
     except ZeroDivisionError as e:
-        raise ZeroDivisionError("Division by zero. Check that your strike price and maturity are non-zero and try again. Details: <" + str(e) + ">")
+        raise ZeroDivisionError("Division by zero. Check that your strike price and maturity are non-zero and try again. Details: " + str(e))
 
     except ValueError as e:
-        raise ValueError("Arithmetic error. Check that the current price is not zero try again. Details: <" + str(e) + ">")
+        raise ValueError("Arithmetic error. Check inputs to make sure that dates or prices are not zero or negative. Details: " + str(e))
