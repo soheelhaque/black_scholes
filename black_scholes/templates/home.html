@@ -95,10 +95,12 @@
             .done(function(data) {
                 $("#optionprice").text(data);
             })
-            .fail(function(xhr, textStatus, errorThrown) {
-                let error_msg = textStatus + ': ' + errorThrown + ' - ' + xhr.responseJSON.detail;
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                response = jqXHR.responseJSON
+                host_err = response.error
+                let error_msg = textStatus + ': ' + errorThrown + '\n' + host_err;
                 $("#optionprice").text("");
-                alert(error_msg.Message);
+                alert(error_msg);
             });
     }
     </script>
