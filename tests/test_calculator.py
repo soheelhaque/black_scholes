@@ -39,6 +39,23 @@ class TestOptionPriceCalculator(unittest.TestCase):
         actual_result = calculate_option_price(json_in)
         self.assertEqual(expected_result, actual_result)
 
+    def test_calculate_call_option_zero_maturity(self):
+        model_inputs = '{"call_put":"CALL", "strike_price":105, "option_maturity_years":0, "current_price":100, ' \
+                       '"volatility_percent":20, "risk_free_rate_percent":5}'
+        json_in = json.loads(model_inputs)
+        self.assertRaises(ZeroDivisionError, calculate_option_price, model_inputs=json_in)
+    
+    def test_calculate_call_option_zero_strike(self):
+        model_inputs = '{"call_put":"CALL", "strike_price":0, "option_maturity_years":1, "current_price":100, ' \
+                       '"volatility_percent":20, "risk_free_rate_percent":5}'
+        json_in = json.loads(model_inputs)
+        self.assertRaises(ZeroDivisionError, calculate_option_price, model_inputs=json_in)
+
+    def test_calculate_call_option_zero_price(self):
+        model_inputs = '{"call_put":"CALL", "strike_price":105, "option_maturity_years":1, "current_price":0, ' \
+                       '"volatility_percent":20, "risk_free_rate_percent":5}'
+        json_in = json.loads(model_inputs)
+        self.assertRaises(ValueError, calculate_option_price, model_inputs=json_in)
 
 if __name__ == '__main__':
     unittest.main()
