@@ -10,6 +10,9 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous">
     </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js">
+    </script>
 </head>
 <body>
     <div class="container">
@@ -45,7 +48,7 @@
                     <td><input id="risk_free_rate_percent" type="text" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><button id="calculateprice" onclick="calculate()">Calculate</button></td>
+                    <td colspan="2"><button id="calculate">Calculate</button></td>
                 </tr>
             </table>
         </div>
@@ -61,41 +64,13 @@
         </div>
         <div class="error">
         </div>
+        <!--TODO: Centre and resize chart-->
+        <div style="width: 50%; margin: 0px auto">
+            <canvas id="canvas"></canvas>
+        </div>
     </div>
-    <!--
-        JQuery Syntax: $(selector).action()
-        $() is shorthand for jQuery()
-        # denotes selector for an HTML id
-        . denotes selector for an HTML class
-    -->
-    <script>
-    function calculate() {
-        let ajax_options = {
-            type: 'POST',
-            url: 'api/calculator',
-            accepts: 'application/json',
-            contentType: 'application/json',
-            dataType: 'json',
-            data: JSON.stringify({
-                'call_put': $('input[name=call_put]:checked').val(), 
-                'strike_price': parseFloat($("#strike_price").val()), 
-                'option_maturity_years': parseFloat($("#option_maturity_years").val()), 
-                'current_price': parseFloat($("#current_price").val()), 
-                'volatility_percent': parseFloat($("#volatility_percent").val()), 
-                'risk_free_rate_percent': parseFloat($("#risk_free_rate_percent").val())
-                })
-        };
-        $.ajax(ajax_options)
-            .done(function(data) {
-                $("#optionprice").text(data);
-            })
-            .fail(function(jqXHR, textStatus, errorThrown) {
-                err_details = JSON.stringify(jqXHR.responseJSON)
-                let error_msg = textStatus + ': ' + errorThrown + '\n' + err_details;
-                $("#optionprice").text("");
-                alert(error_msg);
-            });
-    }
-    </script>
 </body>
+<!--This script tag must be at the end of the file, as the selectors within reference HTML
+    elements that must be created first-->
+<script src="static/js/home.js"></script>
 </html>
