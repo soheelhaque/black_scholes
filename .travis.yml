@@ -1,4 +1,8 @@
 language: python
+
+services:
+  - docker
+
 python:
   - "3.7"
 
@@ -11,5 +15,11 @@ before_install:
 install:
   - pip install -r requirements.txt
 
+before_script:
+  - pytest -ra --cov=black_scholes --ignore smoke_tests
+
 script:
-  - pytest -ra --cov=black_scholes
+  - docker-compose up --build --abort-on-container-exit
+
+after_script:
+  - docker-compose down --rmi all
