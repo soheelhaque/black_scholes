@@ -6,4 +6,5 @@ services:
       - "5000:5000"
   smoke_test:
     build: ./smoke_tests
-    command: sh -c 'dockerize -wait http://host.docker.internal:5000 -- pytest -ra'
+    # local Docker endpoint = 172.17.0.1 for UNIX, host.docker.internal for Windows/Mac
+    command: sh -c 'dockerize -wait http://172.17.0.1:5000 -- pytest -ra'
