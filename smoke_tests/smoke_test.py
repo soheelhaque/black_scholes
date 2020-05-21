@@ -5,7 +5,7 @@ import requests
 class TestOptionPriceCalculator(unittest.TestCase):
     
 	# define the api-endpoint  
-	API_ENDPOINT = "http://host.docker.internal:5000/api/calculator"
+	API_ENDPOINT = "http://172.17.0.1:5000/api/calculator"
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 	
 	def create_data_to_post(self, call_put, current_price, option_maturity_years, risk_free_rate_percent, strike_price, volatility_percent):
