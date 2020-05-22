@@ -4,7 +4,11 @@ import requests
 
 class TestOptionPriceCalculator(unittest.TestCase):
     
+<<<<<<< HEAD
 	# define the api-endpoint (local Docker endpoint = 172.17.0.1 for UNIX, host.docker.internal for Windows/Mac)
+=======
+	# define the api-endpoint  
+>>>>>>> 4676f97ac3bacf95bfb03f72249a03b8f8b81bfc
 	API_ENDPOINT = "http://172.17.0.1:5000/api/calculator"
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 	
