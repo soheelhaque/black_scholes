@@ -1,3 +1,5 @@
 Flask
 connexion
 scipy
+swagger-ui
+pytest

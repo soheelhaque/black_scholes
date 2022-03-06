@@ -5,6 +5,6 @@ services:
     ports:
       - "5000:5000"
   smoke_test:
-    build: ./smoke_tests
+    build: ./tests
     # For unix, host address should be 172.17.0.1, windows and mac should be host.docker.internal
     command: sh -c 'dockerize -wait http://172.17.0.1:5000 -- pytest -ra'
